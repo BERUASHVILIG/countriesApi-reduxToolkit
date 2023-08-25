@@ -20,23 +20,23 @@ export const countriesSlice = createSlice({
       state.error = false;
       state.message = "";
     },
-    extraReducers: (builder) => {
-      builder
-        .addcase(showAllCountries.pending, (state) => {
-          state.loading = true;
-        })
-        .addcase(showAllCountries.fulfilled, (state, action) => {
-          state.loading = false;
-          state.countriesData = action.payload;
-          state.success = true;
-        })
-        .addcase(showAllCountries.rejected, (state, action) => {
-          state.loading = false;
-          state.error = true;
-          state.message = action.payload;
-          state.countriesData = [];
-        });
-    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(showAllCountries.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(showAllCountries.fulfilled, (state, action) => {
+        state.loading = false;
+        state.countriesData = action.payload;
+        state.success = true;
+      })
+      .addCase(showAllCountries.rejected, (state, action) => {
+        state.loading = false;
+        state.error = true;
+        state.message = action.payload;
+        state.countriesData = [];
+      });
   },
 });
 
